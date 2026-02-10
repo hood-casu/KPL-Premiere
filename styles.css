@@ -18,19 +18,37 @@ body {
   margin: 0 auto;
 }
 
-/* ===== LOGO ===== */
+/* ===== HERO / HEADER ===== */
+.hero {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
 .logo-container {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .logo {
-  max-width: 300px;
+  max-width: 240px;
   height: auto;
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
   background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
   padding: 20px;
   border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.hero-subtitle {
+  color: #94a3b8;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin: 0;
 }
 
 /* ===== NOTIFICATION TOAST ===== */
@@ -562,10 +580,254 @@ td:nth-child(2) {
   display: none;
 }
 
+/* ===== MATCH LAYOUT (extracted from inline JS) ===== */
+.match-header {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.match-vs {
+  color: #64748b;
+  font-weight: normal;
+}
+
+.match-bo3-label {
+  color: #a855f7;
+  font-weight: 600;
+}
+
+.match-inputs {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.match-bo3-inputs {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.match-score-box--a {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(59, 130, 246, 0.1);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.match-score-box--b {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(139, 92, 246, 0.1);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.match-score-box--a.bo3,
+.match-score-box--b.bo3 {
+  flex: 1;
+  min-width: 280px;
+  padding: 16px;
+}
+
+.match-score-label--a {
+  font-weight: 600;
+  color: #3b82f6;
+  font-size: 14px;
+}
+
+.match-score-label--b {
+  font-weight: 600;
+  color: #a855f7;
+  font-size: 14px;
+}
+
+.match-score-label--a.bo3 {
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.match-score-label--b.bo3 {
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.match-game-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.match-game-label {
+  width: 60px;
+  font-size: 13px;
+}
+
+.match-game-input {
+  width: 80px;
+}
+
+.match-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.match-submit {
+  align-self: center;
+}
+
+.match-result {
+  margin-top: 12px;
+  padding: 12px;
+  background: rgba(16, 185, 129, 0.1);
+  border-radius: 8px;
+  display: none;
+}
+
+.match-result--success {
+  font-weight: 600;
+  color: #10b981;
+}
+
+.match-result--admin {
+  font-weight: 600;
+  color: #f59e0b;
+}
+
+.match-result-scores {
+  margin-top: 4px;
+  color: #e2e8f0;
+}
+
+.match-result-winner {
+  margin-top: 4px;
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+.match-games-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ===== LEAGUE TABLE HELPERS ===== */
+.player-team {
+  color: #64748b;
+  font-size: 12px;
+}
+
+/* ===== EMPTY STATE ===== */
+.empty-state td {
+  color: #64748b;
+  font-style: italic;
+  padding: 32px 16px;
+  text-align: center;
+}
+
+.empty-state:hover {
+  background: transparent !important;
+}
+
+/* ===== INLINE ERROR MESSAGES ===== */
+.match-error {
+  color: #ef4444;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 6px;
+  display: none;
+  width: 100%;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.match-error.show {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== SMOOTH SCROLL ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== CONFIRMATION DIALOG ===== */
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.confirm-dialog {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.confirm-dialog h3 {
+  color: #f59e0b;
+  margin: 0 0 12px 0;
+  font-size: 20px;
+}
+
+.confirm-dialog p {
+  color: #94a3b8;
+  margin: 0 0 24px 0;
+  line-height: 1.5;
+}
+
+.confirm-dialog .confirm-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.confirm-dialog .btn-confirm-yes {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+}
+
+.confirm-dialog .btn-confirm-no {
+  background: linear-gradient(135deg, #475569 0%, #334155 100%);
+  color: #e2e8f0;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
+  body {
+    padding: 12px;
+  }
+
   #teamInputs {
     grid-template-columns: 1fr;
+    padding: 16px;
+    gap: 12px;
   }
   
   .tables-grid {
@@ -574,5 +836,81 @@ td:nth-child(2) {
   
   h1 {
     font-size: 28px;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .button-group button {
+    width: 100%;
+  }
+
+  .status-indicator {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .backup-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .table-container {
+    padding: 16px;
+  }
+
+  .table-container h2 {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .match {
+    padding: 12px;
+  }
+
+  .match-inputs {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .match-score-box--a,
+  .match-score-box--b {
+    width: 100%;
+  }
+
+  .match-bo3-inputs {
+    flex-direction: column;
+  }
+
+  .match-score-box--a.bo3,
+  .match-score-box--b.bo3 {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .round {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    max-width: 160px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  th, td {
+    padding: 8px 6px;
+    font-size: 13px;
   }
 }
