@@ -1,0 +1,11 @@
+{
+  "name": "kpl-premiere",
+  "version": "1.0.0",
+  "description": "Kenji Pickleball League - 15-Week League Management App",
+  "scripts": {
+    "dev": "npx live-server . --port=3001",
+    "start": "npx live-server . --port=3001"
+  },
+  "author": "",
+  "license": "ISC"
+}
